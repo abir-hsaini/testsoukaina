@@ -1,0 +1,37 @@
+name: Compile 4D Project
+
+on:
+  push:
+    paths:
+      - 'Project/**'           # Only run if something in the project folder changes
+  workflow_dispatch:           # Still allow manual trigger anytime
+
+jobs:
+  compile:
+    runs-on: [self-hosted, Windows, X64]
+
+    env:
+      TOOL4D_PATH: C:\Users\Admin\Downloads\tool4d_win\tool4d\Tool4D.exe
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Compile with Tool4D
+        shell: cmd
+        run: |
+          %TOOL4D_PATH% --project "C:\Users\Admin\Desktop\demo-Build4D-Win\Project\demo-Build4D-Win.4DProject"  --dataless --log-level=0 --user-param "C:/Users/Admin/Desktop/demo-Build4D-Win/Project/demo-Build4D-Win.4DProject" --skip-onstartup --startup-method "compileMethod"  > compile_output.txt
+     
+      - name: Check compilation result
+        shell: powershell
+        run: |
+          $content = Get-Content compile_output.txt -Raw
+          Write-Output "📄 Tool4D Output:"
+          Write-Output $content
+      
+          if ($content -match '"success"\s*:\s*false' -or $content -match '"errors"\s*:\s*\[[^\]]+') {
+              Write-Output "❌ Compilation completed with errors!"
+              exit 1
+          } else {
+              Write-Output "✅ Compilation succeeded with no errors!"
+          }

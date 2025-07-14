@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE base SYSTEM "http://www.4d.com/dtd/2007/base.dtd" >
-<base name="DomCase" uuid="64FCE250D88AD24FA4891F8223A941CB" collation_locale="en">
+<base name="demo-Build4D-Win" uuid="1C6418D2858B78489BBAE847BA65505E" collation_locale="en">
 	<schema name="DEFAULT_SCHEMA"/>
-	<base_extra>
-		<journal_file journal_file_enabled="true"/>
-	</base_extra>
+	<table name="Table_1" uuid="8DFC6923A0D3AA49951A8C8450C53ED7" id="1">
+		<field name="PK_ID" uuid="34BF4ED74C095C49B8E2464D5C4423B2" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<primary_key field_name="PK_ID" field_uuid="34BF4ED74C095C49B8E2464D5C4423B2"/>
+	</table>
+	<index kind="regular" unique_keys="true" uuid="6E1BC1D7DE77C5459A128FF2E9795214" type="7">
+		<field_ref uuid="34BF4ED74C095C49B8E2464D5C4423B2" name="PK_ID">
+			<table_ref uuid="8DFC6923A0D3AA49951A8C8450C53ED7" name="Table_1"/>
+		</field_ref>
+	</index>
 </base>

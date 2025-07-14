@@ -1,15 +1,42 @@
 {
 	"editors": [
 		{
+			"type": "explorer"
+		},
+		{
+			"type": "method",
+			"id": 2147483644,
+			"codeDescriptor": {
+				"type": 1,
+				"methodName": "buildMethod"
+			}
+		},
+		{
+			"type": "method",
+			"id": 2147483643,
+			"codeDescriptor": {
+				"type": 1,
+				"methodName": "buildServer"
+			}
+		},
+		{
+			"type": "method",
+			"id": 2147483642,
+			"codeDescriptor": {
+				"type": 1,
+				"methodName": "buildStandalone"
+			}
+		},
+		{
+			"type": "structure"
+		},
+		{
 			"type": "method",
 			"id": 2147483647,
 			"codeDescriptor": {
 				"type": 1,
-				"methodName": "Method1"
+				"methodName": "buildClient"
 			}
-		},
-		{
-			"type": "explorer"
 		}
 	]
 }

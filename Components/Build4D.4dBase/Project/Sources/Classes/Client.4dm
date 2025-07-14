@@ -13,6 +13,7 @@ Class constructor($customSettings : Object)
 	
 	If (This._validInstance)
 		
+		
 		This._validInstance:=This._target#""
 		
 		
@@ -127,8 +128,8 @@ Function _make4dLink() : Boolean
 	
 	$server_path:=((This.settings.IPAddress#Null) ? This.settings.IPAddress : "")+(":"+String(This.settings.portNumber))
 	
-	
 	//mark: ACI0105597 : replace This.settings.buildName by This.settings.publishName
+	
 	DOM SET XML ATTRIBUTE($xml; \
 		"is_remote"; "true"; \
 		"server_database_name"; This.settings.publishName; \
@@ -506,7 +507,6 @@ Function build() : Boolean
 	
 	$success:=($success) ? This._manageSettingsPaths() : False
 	
-	$success:=($success) ? This._change_uuid() : False
 	
 	If (Is macOS & This.is_mac_target)
 		$success:=($success) ? This._sign() : False

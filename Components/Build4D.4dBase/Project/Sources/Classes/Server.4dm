@@ -50,33 +50,21 @@ Class constructor($customSettings : Object)
 		End if 
 		
 		//Checking license
-		
-		If (This._hasLicenses())
-			
+		If ((This.settings.license=Null) || (Not(OB Instance of(This.settings.license; 4D.File))))
 			This._log(New object(\
 				"function"; "License file checking"; \
-				"message"; "License file exist"; \
-				"severity"; Information message; \
-				"Licenses"; This.settings.license.name+" "+This.settings.xmlKeyLicense.name))
-			
-			
+				"message"; "License file is not defined"; \
+				"severity"; Information message))
+		Else 
+			If (Not(This.settings.license.exists))
+				//This._validInstance:=False
+				This._log(New object(\
+					"function"; "License file checking"; \
+					"message"; "License file doesn't exist"; \
+					"severity"; Error message; \
+					"path"; This.settings.license.path))
+			End if 
 		End if 
-		
-		//If ((This.settings.license=Null) || (Not(OB Instance of(This.settings.license; 4D.File))))
-		//This._log(New object(\
-			"function"; "License file checking"; \
-			"message"; "License file is not defined"; \
-			"severity"; Information message))
-		//Else 
-		//If (Not(This.settings.license.exists))
-		////This._validInstance:=False
-		//This._log(New object(\
-			"function"; "License file checking"; \
-			"message"; "License file doesn't exist"; \
-			"severity"; Error message; \
-			"path"; This.settings.license.path))
-		//End if 
-		//End if 
 		
 		
 		//Checking source app
@@ -357,8 +345,6 @@ $status        Boolean       out          True if licenses are associated in the
 	
 */
 	
-	
-	
 Function _hasLicenses : Boolean
 	
 	If (OB Instance of(This.settings.license; 4D.File) && OB Instance of(This.settings.xmlKeyLicense; 4D.File))
@@ -370,11 +356,18 @@ Function _hasLicenses : Boolean
 	return False
 	
 	
-	//MARK:- fix from bugbase
+/*
 	
-Function _fix_publishName : Boolean
+Function _fix_publishName() -> $status : Boolean
+........................................................................................
+Parameter      Type         in/out        Description
+........................................................................................
+$status        Boolean       out          True if publication name is correctly defined.
+........................................................................................
 	
-	//fix ACI0105597
+*/
+	
+Function _fix_publishName : Boolean  //mark: fix ACI0105597
 	
 	var $sources_folder : 4D.Folder
 	var $settings_file : 4D.File
@@ -402,30 +395,14 @@ Function _fix_publishName : Boolean
 			Else 
 				
 				XML SET OPTIONS($xml; XML indentation; XML with indentation)
-				ARRAY TEXT($_node; 0)
-				
-				
-				
-				//$options:=DOM Find XML element($xml; "com.4d/server/network/options"; $_node)
 				
 				$options:=DOM Create XML element($xml; "com.4d/server/network/options")
-				
-				//If (Size of array($_node)>0)
 				
 				DOM SET XML ATTRIBUTE($options; "publication_name"; This.publishName)
 				
 				
 				DOM EXPORT TO VAR($xml; $buffer)
 				$settings_file.setText($buffer)
-				
-				//#DD deferred because we have to restore ok and error values
-				
-				//Else 
-				////#DD may be create the path
-				
-				
-				
-				//End if 
 				
 				DOM CLOSE XML($xml)
 				
@@ -447,8 +424,6 @@ Function _fix_publishName : Boolean
 				"severity"; Error message))
 		End if 
 		
-		
-		
 		return $result
 		
 	Else 
@@ -461,7 +436,6 @@ Function _fix_publishName : Boolean
 	End if 
 	
 	return True
-	
 	
 	
 	
@@ -541,7 +515,6 @@ Function build() : Boolean
 	$success:=($success) ? This._manageSettingsPaths() : False
 	$success:=($success) ? This._create4DZ() : False  //#2030 #2032
 	
-	$success:=($success) ? This._change_uuid() : False
 	
 	If ($success)
 		
@@ -564,23 +537,6 @@ Function build() : Boolean
 		
 		$Upgrade4DClient.create()
 		
-		// ACI0105675 update
-		
-		var $formula : 4D.Function
-		var $cmd : Text
-		
-		Case of 
-				
-			: (Value type(This.settings.macOSClientArchive)=Is text) && (Position(Folder separator; This.settings.macOSClientArchive)>0) && (Test path name(This.settings.macOSClientArchive)=Is a document)
-				This.settings.macOSClientArchive:=File(This.settings.macOSClientArchive; fk platform path)
-				
-			: (Value type(This.settings.macOSClientArchive)=Is text) && (Position("/"; This.settings.macOSClientArchive)=1)
-				$cmd:="File:C1566(\""+This.settings.macOSClientArchive+"\").platformPath"
-				$formula:=Formula from string($cmd; sk execute in host database)
-				This.settings.macOSClientArchive:=File($formula.call(); fk platform path)
-				
-		End case 
-		
 		If (OB Instance of(This.settings.macOSClientArchive; 4D.File))  //#2062
 			
 			This.settings.macOSClientArchive.moveTo($Upgrade4DClient)
@@ -588,18 +544,6 @@ Function build() : Boolean
 			$hasClients:=True
 			
 		End if 
-		
-		Case of 
-				
-			: (Value type(This.settings.windowsClientArchive)=Is text) && (Position(Folder separator; This.settings.windowsClientArchive)>0) && (Test path name(This.settings.windowsClientArchive)=Is a document)
-				This.settings.windowsClientArchive:=File(This.settings.windowsClientArchive; fk platform path)
-				
-			: (Value type(This.settings.windowsClientArchive)=Is text) && (Position("/"; This.settings.windowsClientArchive)=1)
-				$cmd:="File:C1566(\""+This.settings.windowsClientArchive+"\").platformPath"
-				$formula:=Formula from string($cmd; sk execute in host database)
-				This.settings.windowsClientArchive:=File($formula.call(); fk platform path)
-				
-		End case 
 		
 		If (OB Instance of(This.settings.windowsClientArchive; 4D.File))  //#2063
 			

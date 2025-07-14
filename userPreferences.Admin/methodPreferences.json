@@ -1,11 +1,65 @@
 {
-	"Sources/Methods/Method1.4dm": {
+	"Sources/Methods/host_startup.4dm": {
 		"startSelection": 0,
 		"endSelection": 0,
-		"firstSelectedLine": 16,
-		"lastSelectedLine": 16,
+		"firstSelectedLine": 1,
+		"lastSelectedLine": 1,
 		"folding": [],
 		"bookmarks": [],
-		"stamp": "2025-07-10T12:28:28.724Z"
+		"stamp": "2025-07-04T13:58:42.391Z"
+	},
+	"Sources/Methods/startup.4dm": {
+		"startSelection": 12,
+		"endSelection": 12,
+		"firstSelectedLine": 0,
+		"lastSelectedLine": 0,
+		"folding": [],
+		"bookmarks": [],
+		"stamp": "2025-06-24T09:10:24.528Z"
+	},
+	"Sources/Methods/buildServer.4dm": {
+		"startSelection": 0,
+		"endSelection": 0,
+		"firstSelectedLine": 0,
+		"lastSelectedLine": 0,
+		"folding": [],
+		"bookmarks": [],
+		"stamp": "2025-07-14T12:15:40.331Z"
+	},
+	"Sources/Methods/buildStandalone.4dm": {
+		"startSelection": 0,
+		"endSelection": 0,
+		"firstSelectedLine": 0,
+		"lastSelectedLine": 0,
+		"folding": [],
+		"bookmarks": [],
+		"stamp": "2025-07-14T12:15:40.333Z"
+	},
+	"Sources/Methods/compileMethod.4dm": {
+		"startSelection": 0,
+		"endSelection": 0,
+		"firstSelectedLine": 15,
+		"lastSelectedLine": 15,
+		"folding": [],
+		"bookmarks": [],
+		"stamp": "2025-07-04T11:38:05.809Z"
+	},
+	"Sources/Methods/buildMethod.4dm": {
+		"startSelection": 0,
+		"endSelection": 0,
+		"firstSelectedLine": 0,
+		"lastSelectedLine": 0,
+		"folding": [],
+		"bookmarks": [],
+		"stamp": "2025-07-14T12:15:40.331Z"
+	},
+	"Sources/Methods/buildClient.4dm": {
+		"startSelection": 0,
+		"endSelection": 61,
+		"firstSelectedLine": 0,
+		"lastSelectedLine": 40,
+		"folding": [],
+		"bookmarks": [],
+		"stamp": "2025-07-14T12:15:40.326Z"
 	}
 }

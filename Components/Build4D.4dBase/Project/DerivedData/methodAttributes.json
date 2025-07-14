@@ -1,26 +1,37 @@
 {
 	"methods": {
 		"buildComponent": {
-			"timeStamp": "2025-07-14T12:35:02Z",
+			"timeStamp": "2025-07-14T12:15:40Z",
 			"attributes": {
 				"preemptive": "capable"
 			}
 		},
-		"Method8": {
-			"timeStamp": "2025-07-14T12:35:02Z"
-		},
 		"onError": {
-			"timeStamp": "2025-07-14T12:35:02Z",
+			"timeStamp": "2025-07-14T12:15:40Z",
 			"attributes": {
 				"invisible": true,
 				"preemptive": "capable"
 			}
 		},
 		"onStartup": {
-			"timeStamp": "2025-07-14T12:35:02Z",
+			"timeStamp": "2025-07-14T12:15:40Z",
 			"attributes": {
 				"invisible": true,
 				"preemptive": "capable"
+			}
+		},
+		"quit4D_coop": {
+			"timeStamp": "2025-07-14T12:15:40Z",
+			"attributes": {
+				"invisible": true,
+				"preemptive": "incapable"
+			}
+		},
+		"showOnDisk_coop": {
+			"timeStamp": "2025-07-14T12:15:40Z",
+			"attributes": {
+				"invisible": true,
+				"preemptive": "incapable"
 			}
 		}
 	}

@@ -1,7 +1,43 @@
 {
-	"Sources/Methods/Method1.4dm": {
+	"Sources/Methods/host_startup.4dm": {
 		"left": 0,
-		"top": 111,
+		"top": 78,
+		"width": 1265,
+		"height": 556
+	},
+	"Sources/Methods/startup.4dm": {
+		"left": 45,
+		"top": 108,
+		"width": 965,
+		"height": 554
+	},
+	"Sources/Methods/buildServer.4dm": {
+		"left": -21326,
+		"top": 110,
+		"width": 965,
+		"height": 554
+	},
+	"Sources/Methods/buildStandalone.4dm": {
+		"left": -21326,
+		"top": 110,
+		"width": 1000,
+		"height": 488
+	},
+	"Sources/Methods/compileMethod.4dm": {
+		"left": 0,
+		"top": 78,
+		"width": 1265,
+		"height": 556
+	},
+	"Sources/Methods/buildMethod.4dm": {
+		"left": -21333,
+		"top": -21253,
+		"width": 965,
+		"height": 563
+	},
+	"Sources/Methods/buildClient.4dm": {
+		"left": 1,
+		"top": 58,
 		"width": 1536,
 		"height": 714
 	}

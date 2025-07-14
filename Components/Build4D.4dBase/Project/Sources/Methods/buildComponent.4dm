@@ -45,8 +45,6 @@ If (Application info.headless)
 Else 
 	If ($success)
 		ALERT("Build OK")
-		SHOW ON DISK(File("/PACKAGE/Build_end.log").platformPath)
-		SHOW ON DISK($build.settings.destinationFolder.platformPath)
 	Else 
 		ALERT("Build failed")
 		SHOW ON DISK(File("/PACKAGE/Build_failed.log").platformPath)

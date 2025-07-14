@@ -1,0 +1,23 @@
+# misc
+.DS_Store
+._*
+ehthumbs.db
+Thumbs.db
+
+# 4D
+**/[dD][aA][tT][aA]/
+*.4DD
+*.Match
+**/DerivedData/
+**/Libraries/
+**/userPreferences.*/
+**/Logs/
+**/Build
+**/Settings
+Resources/manifest.json
+Resources/InfoPlist.strings
+
+# Github Pages (private repo)
+_config.yml
+_includes/
+assets/

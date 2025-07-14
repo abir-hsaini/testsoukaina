@@ -33,15 +33,16 @@ Else
 				buildComponent
 				
 				
+				
+				
 			Else 
-				
 				LOG EVENT(Into system standard outputs; "::error ::User parameter not recognized ("+$userParam+")!"; Error message)
-				
 		End case 
 		
 		If ($quit4D)
 			
-			QUIT 4D
+			//QUIT 4D // not préemptive
+			CALL WORKER("cooperative bridge"; "quit4D_coop")
 			
 		End if 
 	End if 

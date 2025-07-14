@@ -1,9 +1,23 @@
 [
 	{
-		"line": 15,
+		"line": 1,
 		"method": {
 			"type": 1,
-			"methodName": "Method1"
+			"methodName": "buildStandalone"
+		}
+	},
+	{
+		"line": 40,
+		"method": {
+			"type": 1,
+			"methodName": "buildClient"
+		}
+	},
+	{
+		"line": 38,
+		"method": {
+			"type": 1,
+			"methodName": "buildClient"
 		}
 	}
 ]

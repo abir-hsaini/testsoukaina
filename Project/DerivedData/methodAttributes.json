@@ -1,7 +1,31 @@
 {
 	"methods": {
-		"Method1": {
-			"timeStamp": "2025-07-10T12:28:28Z"
+		"buildClient": {
+			"timeStamp": "2025-07-14T12:15:40Z"
+		},
+		"buildCompiledStructure": {
+			"timeStamp": "2025-07-14T12:15:40Z"
+		},
+		"buildComponent": {
+			"timeStamp": "2025-07-14T12:15:40Z"
+		},
+		"buildMethod": {
+			"timeStamp": "2025-07-14T12:15:40Z"
+		},
+		"buildServer": {
+			"timeStamp": "2025-07-14T12:15:40Z"
+		},
+		"buildStandalone": {
+			"timeStamp": "2025-07-14T12:15:40Z"
+		},
+		"compileMethod": {
+			"timeStamp": "2025-07-14T12:15:40Z"
+		},
+		"host_startup": {
+			"timeStamp": "2025-07-14T12:15:40Z"
+		},
+		"startup": {
+			"timeStamp": "2025-07-14T12:15:40Z"
 		}
 	}
 }

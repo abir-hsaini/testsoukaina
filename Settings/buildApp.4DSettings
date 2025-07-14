@@ -2,10 +2,10 @@
 <Preferences4D>
 
   <BuildApp>
-    <BuildCompiled>True</BuildCompiled>
+    <BuildCompiled>False</BuildCompiled>
     <IncludeAssociatedFolders>True</IncludeAssociatedFolders>
     <BuildComponent>False</BuildComponent>
-    <BuildApplicationSerialized>False</BuildApplicationSerialized>
+    <BuildApplicationSerialized>True</BuildApplicationSerialized>
     <RuntimeVL>
       <LastDataPathLookup>ByAppName</LastDataPathLookup>
     </RuntimeVL>
@@ -29,14 +29,15 @@
       <CurrentVers>1</CurrentVers>
       <HardLink></HardLink>
     </CS>
-    <BuildApplicationName>DomCase</BuildApplicationName>
+    <BuildApplicationName>demo-Build4D-Win</BuildApplicationName>
     <Licenses>
       <EvaluationMode>False</EvaluationMode>
       <ArrayLicenseWin>
-        <ItemsCount>0</ItemsCount>
+        <ItemsCount>1</ItemsCount>
+        <Item1>C:\ProgramData\4D\Licenses\R-4USD000UUR001BCQ8S11F61.license4D</Item1>
       </ArrayLicenseWin>
     </Licenses>
-    <BuildWinDestFolder>..\DomCase_Build</BuildWinDestFolder>
+    <BuildWinDestFolder>..\demo-Build4D-Win_Build</BuildWinDestFolder>
     <ArrayExcludedPluginName>
       <ItemsCount>0</ItemsCount>
     </ArrayExcludedPluginName>

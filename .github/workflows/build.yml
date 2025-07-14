@@ -1,0 +1,48 @@
+name: Build 4D Project
+
+on:
+  workflow_dispatch:           # Still allow manual trigger anytime
+
+jobs:
+  build:
+    runs-on: [self-hosted, Windows, X64]
+
+    env:
+      TOOL4D_PATH: C:\Users\Admin\Downloads\tool4d_win\tool4d\Tool4D.exe
+  
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build with Tool4D
+        shell: cmd
+        run: |
+          %TOOL4D_PATH% --project "C:\Users\Admin\Desktop\demo-Build4D-Win\Project\demo-Build4D-Win.4DProject" --dataless --skip-onstartup --startup-method "buildMethod" > build_output.txt 2>&1
+
+      - name: Check build result
+        shell: powershell
+        run: |
+          $content = Get-Content build_output.txt -Raw
+          Write-Output "📄 Tool4D Build Output:"
+          Write-Output "----------------------------------------"
+          Write-Output $content
+          Write-Output "----------------------------------------"
+      
+          if ($content -notmatch '✅ All builds succeeded!') {
+              Write-Output "❌ Build did not complete successfully."
+              Write-Output "📄 Full Build Log:"
+              Write-Output "----------------------------------------"
+              Write-Output $content
+              Write-Output "----------------------------------------"
+              exit 1
+          } else {
+              Write-Output "✅ Build log confirms successful execution."
+          }
+
+      # - name: Success message
+      #   if: success()
+      #   run: echo "✅ Build succeeded!"
+
+      # - name: Failure message
+      #   if: failure()
+      #   run: echo "❌ Build failed!"

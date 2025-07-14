@@ -1,5 +1,5 @@
 
-//mark:- DOCUMENTATION PRIVATE PROPERTIES
+//mark:- DOCUMENTAION PRIVATE PROPERTIES
 
 /*
 
@@ -1154,78 +1154,6 @@ Function toPosix($o : Object) : Object
 			
 	End case 
 	
-	
-	//MARK:- Change default uuid from app
-	
-	//feature #13565 when the build4d component is used to build a macos application then its uuids shall be made unique
-	
-Function _change_uuid() : Boolean
-	
-	var $app : 4D.Folder
-	var $executable; $info_plist : 4D.File
-	var $bundleID : Text
-	var $arch; $info : Object
-	
-	
-	If (This.is_mac_target && Is macOS)
-		
-		$app:=This._structureFolder.parent.parent
-		
-		If ($app.exists)
-			// read the bundle id in the info.plist
-			$info_plist:=$app.file("Contents/Info.plist").getAppInfo()
-			
-			If ($info_plist#Null)
-				// read the bundle id in the info.plist
-				$bundleID:=$info_plist.CFBundleIdentifier
-				
-				// reading uuids
-				$executable:=$app.folder("Contents/MacOS/").file(This.buildName)
-				
-				If ($executable.exists)
-					$info:=$executable.getAppInfo()
-					
-					Case of 
-							
-						: (Value type($info.archs)=Is collection) && ($info.archs.length>0)
-							// update uuids by combining them with the id bundle
-							For each ($arch; $info.archs)
-								$arch.uuid:=Uppercase(Substring(Generate digest($bundleID+$arch.uuid; SHA256 digest); 1; 32))
-							End for each 
-							
-							// write new uuids
-							$executable.setAppInfo($info)
-					End case 
-					
-					return True
-					
-				Else 
-					
-					This._log(New object(\
-						"function"; "Change application uuid"; \
-						"message"; "Application binary not found."; \
-						"severity"; Error message))
-					
-				End if 
-				
-			Else 
-				This._log(New object(\
-					"function"; "Change application uuid"; \
-					"message"; "Can't retrieve Info.plist inforation."; \
-					"severity"; Error message))
-			End if 
-		Else 
-			
-			This._log(New object(\
-				"function"; "Change application uuid"; \
-				"message"; "Builded application not found."; \
-				"severity"; Error message))
-		End if 
-		
-	Else 
-		return True
-	End if 
-	
 	//MARK:- Signs the project
 	
 /*
@@ -1353,11 +1281,11 @@ check your network configuration proxy .....
 	return True
 	
 	
-	//MARK:- Utilities
-	
 Function _show() : Object
 	
 	
-	SHOW ON DISK(This.settings.destinationFolder.platformPath)
+	//SHOW ON DISK(This.settings.destinationFolder.platformPath) // not preemptive
+	
+	CALL WORKER("cooperative bridge"; "showOnDisk_coop"; This.settings.destinationFolder.platformPath)
 	
 	return This
