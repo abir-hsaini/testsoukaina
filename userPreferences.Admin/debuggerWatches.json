@@ -1,0 +1,40 @@
+[
+	{
+		"codeDescriptorWatches": [
+			{
+				"path": "Method1",
+				"watches": [
+					{
+						"type": 66,
+						"formula": "vElemRef"
+					},
+					{
+						"type": 66,
+						"formula": "$Root"
+					},
+					{
+						"type": 66,
+						"formula": "DOM Create XML Ref:C861($Root; $Namespace; $aNSName1; $aNSValue1; $aNSName2; $aNSValue2)"
+					},
+					{
+						"type": 66,
+						"formula": "DOM Get root XML element:C1053(vElemRef)"
+					},
+					{
+						"type": 66,
+						"formula": "//new expression"
+					},
+					{
+						"type": 66,
+						"formula": "$build",
+						"expanded": true
+					},
+					{
+						"type": 66,
+						"formula": "$success"
+					}
+				]
+			}
+		]
+	}
+]
