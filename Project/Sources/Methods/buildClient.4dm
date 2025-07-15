@@ -13,7 +13,7 @@ $settings.startElevated:=True:C214
 $settings.projectFile:=Folder:C1567(fk desktop folder:K87:19).file("demo-Build4D-Win/Project/demo-Build4D-Win.4DProject")
 
 // Define the 4D Volume Desktop path
-$settings.sourceAppFolder:=Folder:C1567(fk documents folder:K87:21).folder("4D 20 R8 100333/4D Volume Desktop")
+$settings.sourceAppFolder:="C:/Program Files/4D/4D 20 R8/4D Volume Desktop"
 
 // Configure the application
 $settings.buildName:="clientApp"
