@@ -14,7 +14,7 @@ $settings.projectFile:=Folder:C1567(fk desktop folder:K87:19).file("demo-Build4D
 LOG EVENT:C667(Into system standard outputs:K38:9; "🖥️ inside server code 1: "+$settings.projectFile.path+"\r\n")
 
 // Define the 4D Server path
-$settings.sourceAppFolder:=Folder:C1567(fk documents folder:K87:21).folder("4D 20 R8 100333/4D Server")
+$settings.sourceAppFolder:="C:/Program Files/4D/4D 20 R8/4D Server"
 LOG EVENT:C667(Into system standard outputs:K38:9; "🖥️ inside server code 2: "+$settings.sourceAppFolder.path+"\r\n")
 
 // Configure the application
